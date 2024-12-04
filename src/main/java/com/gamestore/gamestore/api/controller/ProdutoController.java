@@ -40,13 +40,13 @@ public class ProdutoController {
 
     @GetMapping("/digital")
     public List<Produto> getAllProdutosDigitais() {
-        return produtoRepository.findAllByTipoProduto("DIGITAL");
+        return produtoRepository.findAllProdutosDigitais();
     }
 
 
     @GetMapping("/fisico")
     public List<Produto> getAllProdutosFisicos() {
-        return produtoRepository.findAllByTipoProduto("FISICO");
+        return produtoRepository.findAllProdutosFisicos();
     }
 
 
@@ -61,13 +61,23 @@ public class ProdutoController {
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @Valid @RequestBody Produto produto) {
+    @PutMapping("digital/{id}")
+    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @Valid @RequestBody ProdutoDigital produto) {
         if (!produtoRepository.existsById(id)) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
         produto.setId(id);
-        Produto produtoAtualizado = produtoRepository.save(produto);
+        ProdutoDigital produtoAtualizado = produtoRepository.save(produto);
+        return ResponseEntity.ok(produtoAtualizado);
+    }
+    
+    @PutMapping("fisico/{id}")
+    public ResponseEntity<Produto> updateProduto(@PathVariable Long id, @Valid @RequestBody ProdutoFisico produto) {
+        if (!produtoRepository.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        produto.setId(id);
+        ProdutoFisico produtoAtualizado = produtoRepository.save(produto);
         return ResponseEntity.ok(produtoAtualizado);
     }
 
@@ -82,7 +92,7 @@ public class ProdutoController {
     }
 
 
-    @GetMapping("/{nome}")
+    @GetMapping("nome/{nome}")
     public List<Produto> getProdutosByNome(@PathVariable String nome) {
         return produtoRepository.findAllByNomeContainingIgnoreCase(nome);
     }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/categorias")
+@RequestMapping("/categoria")
 public class CategoriaController {
 
     @Autowired
@@ -58,7 +58,7 @@ public class CategoriaController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @GetMapping("/nome")
+    @GetMapping("/nome/{nome}")
     public List<Categoria> getCategoriasByNome(@PathVariable String nome) {
         return categoriaRepository.findAllByNomeContainingIgnoreCase(nome);
     }

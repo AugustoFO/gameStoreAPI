@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.Year;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
@@ -24,7 +26,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)  
-@DiscriminatorColumn(name = "tipo_produto", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "tipoProduto", discriminatorType = DiscriminatorType.STRING)
 
 public abstract class Produto {
 	
@@ -38,7 +40,7 @@ public abstract class Produto {
 	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
-	@JsonIgnoreProperties("produto")
+	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
 	
 	@NotNull(message = "O preço é obrigatório.")
@@ -46,8 +48,11 @@ public abstract class Produto {
 	@Min(value = 0, message = "O preço não pode ser negativo.")
     private BigDecimal preco;
 	
+	@JsonSerialize(using = ToStringSerializer.class)
 	@PastOrPresent(message = "O ano de lançamento não pode ser no futuro.")
 	private Year anoLancamento;
+	
+	public Produto() {}
 
 	public Long getId() {
 		return id;

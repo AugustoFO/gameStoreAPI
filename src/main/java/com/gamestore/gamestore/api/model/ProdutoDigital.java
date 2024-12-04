@@ -20,4 +20,29 @@ public class ProdutoDigital extends Produto{
     @Size(min = 3, max = 50, message = "O código de ativação deve ter entre 3 e 50 caracteres.")
     private String codigoAtivacao; // Código de ativação (caso necessário para o produto)
 
+	public BigDecimal getTamanhoArquivo() {
+		return tamanhoArquivo;
+	}
+
+	public void setTamanhoArquivo(BigDecimal tamanhoArquivo) {
+		this.tamanhoArquivo = tamanhoArquivo;
+	}
+
+	public String getPlataforma() {
+		return plataforma;
+	}
+
+	public void setPlataforma(String plataforma) {
+		this.plataforma = plataforma;
+	}
+
+	public String getCodigoAtivacao() {
+		return codigoAtivacao;
+	}
+
+	public void setCodigoAtivacao(String codigoAtivacao) {
+		this.codigoAtivacao = codigoAtivacao;
+	}
+    
+    
 }

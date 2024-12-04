@@ -17,4 +17,20 @@ public class ProdutoFisico extends Produto{
 	@NotNull(message = "A quantidade em estoque é obrigatória.")
 	@Positive(message = "A quantidade em estoque deve ser maior que zero.")
 	private Integer quantidadeEstoque;
+
+	public BigDecimal getPeso() {
+		return peso;
+	}
+
+	public void setPeso(BigDecimal peso) {
+		this.peso = peso;
+	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
 }

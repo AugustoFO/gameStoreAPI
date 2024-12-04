@@ -49,6 +49,14 @@ public abstract class Produto {
 	@PastOrPresent(message = "O ano de lançamento não pode ser no futuro.")
 	private Year anoLancamento;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -73,17 +81,12 @@ public abstract class Produto {
 		this.preco = preco;
 	}
 
-	public Year getAnoDeLancamento() {
+	public Year getAnoLancamento() {
 		return anoLancamento;
 	}
 
-	public void setAnoDeLancamento(Year anoDeLancamento) {
-		this.anoLancamento = anoDeLancamento;
+	public void setAnoLancamento(Year anoLancamento) {
+		this.anoLancamento = anoLancamento;
 	}
 
-	public Long getId() {
-		return id;
-	}
-	
-	
 }

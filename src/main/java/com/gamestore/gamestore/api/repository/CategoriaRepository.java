@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.gamestore.gamestore.api.model.Categoria;
 
 @Repository
-public interface CategoriaRepository extends JpaRepository{
+public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 	public List<Categoria> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
 

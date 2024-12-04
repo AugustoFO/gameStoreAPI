@@ -2,9 +2,14 @@ package com.gamestore.gamestore.api.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+
+@Entity
+@DiscriminatorValue("DIGITAL")
 
 public class ProdutoDigital extends Produto{
 	

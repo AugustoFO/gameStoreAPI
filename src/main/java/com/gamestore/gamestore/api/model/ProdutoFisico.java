@@ -2,10 +2,15 @@ package com.gamestore.gamestore.api.model;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+
+@Entity
+@DiscriminatorValue("FISICO")
 
 public class ProdutoFisico extends Produto{
 	
